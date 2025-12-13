@@ -11,8 +11,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule, // <--- Si falta esto, falla la API
-    FormsModule       // <--- Si falta esto, falla el ngModel
+    HttpClientModule, 
+    FormsModule       
   ],
   providers: [],
   bootstrap: [AppComponent]

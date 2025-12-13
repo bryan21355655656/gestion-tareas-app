@@ -4,7 +4,7 @@ import { ApiService } from './services/api.services';
 
 @Component({
   selector: 'app-root',
-  standalone: false,  // <--- ¡ESTA ES LA LÍNEA MÁGICA QUE TE FALTA!
+  standalone: false,  
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
