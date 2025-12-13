@@ -1,0 +1,41 @@
+<div class="container" style="padding: 20px; font-family: sans-serif;">
+  <h1>Gestor de Tareas (Microservicios)</h1>
+
+  <div style="background: #f0f0f0; padding: 15px; margin-bottom: 20px; border-radius: 8px;">
+    <h2>1. Usuarios (Puerto 3001)</h2>
+    <div style="margin-bottom: 10px;">
+      <input [(ngModel)]="newUser.name" placeholder="Nombre" style="margin-right: 5px;">
+      <input [(ngModel)]="newUser.email" placeholder="Email" style="margin-right: 5px;">
+      <button (click)="addUser()">Crear Usuario</button>
+    </div>
+    <ul>
+      <li *ngFor="let user of users">
+        ID: {{user.id}} - <strong>{{user.name}}</strong> ({{user.email}})
+      </li>
+    </ul>
+  </div>
+
+  <div style="background: #e3f2fd; padding: 15px; border-radius: 8px;">
+    <h2>2. Tareas (Puerto 3002)</h2>
+    <div style="margin-bottom: 10px;">
+      <input [(ngModel)]="newTask.title" placeholder="Tarea..." style="margin-right: 5px;">
+      <select [(ngModel)]="newTask.userId" style="margin-right: 5px;">
+        <option [ngValue]="null" disabled>Asignar a Usuario</option>
+        <option *ngFor="let u of users" [ngValue]="u.id">{{u.name}}</option>
+      </select>
+      <button (click)="addTask()">Agregar Tarea</button>
+    </div>
+    
+    <ul>
+      <li *ngFor="let task of tasks" style="margin-bottom: 5px;">
+        <span [style.text-decoration]="task.completed ? 'line-through' : 'none'">
+          {{task.title}} (Asignado a: {{getUserName(task.userId)}})
+        </span>
+        <button (click)="toggleTask(task.id)" style="margin-left: 10px;">
+          {{ task.completed ? 'Desmarcar' : 'Completar' }}
+        </button>
+        <button (click)="deleteTask(task.id)" style="color: red; margin-left: 5px;">X</button>
+      </li>
+    </ul>
+  </div>
+</div>
